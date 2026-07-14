@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- SEO Meta Tags - CRITICAL FOR GOOGLE INDEXING -->
+    <title>Recruiton | Global Recruiting, HR & Payroll Platform for 110+ Countries</title>
+    <meta name="description" content="Recruiton helps 350+ companies hire, manage, and pay global teams in 110+ countries. Complete recruiting, HR, payroll, and compliance platform. Get started today.">
+    <meta name="keywords" content="global recruiting, international HR, payroll platform, compliance management, employer of record, contractor management, background checks, talent sourcing">
+    <meta name="author" content="Recruiton">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://recruiton.io">
+   
+    <!-- Open Graph Tags for Social Sharing -->
+    <meta property="og:title" content="Recruiton | Global Recruiting & HR Platform">
+    <meta property="og:description" content="Hire and manage global teams in 110+ countries with full compliance. Trusted by 350+ companies.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://recruiton.io">
+    <meta property="og:site_name" content="Recruiton">
+   
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Recruiton | Global Recruiting & HR Platform">
+    <meta name="twitter:description" content="Hire and manage global teams in 110+ countries with full compliance.">
+   
+    <!-- Structured Data for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Recruiton",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "49",
+        "highPrice": "149",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "950"
+      },
+      "description": "Global recruiting, HR, and compliance platform for managing international teams"
+    }
+    </script>
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #10b981;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: #10b981;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #10b981;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #10b981;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #10b981;
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            padding: 6rem 5% 4rem;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .animated-text {
+            color: #10b981;
+            font-style: italic;
+            display: inline-block;
+            min-width: 300px;
+            transition: opacity 0.3s;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 1.5rem auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Improved Dashboard Mockup */
+        .dashboard-mockup {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e5e7eb;
+        }
+
+        .mockup-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1.5rem;
+        }
+
+        .mockup-sidebar {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .mockup-sidebar-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #10b981;
+        }
+
+        .mockup-main {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .mockup-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .mockup-stat {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #10b981;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        /* Trust Banner */
+        .trust-banner {
+            padding: 2rem 5%;
+            background: white;
+            text-align: center;
+        }
+
+        .trust-banner p {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .logo-scroll {
+            display: flex;
+            gap: 4rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .company-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #6b7280;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #6b7280;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid #e5e7eb;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #10b981;
+        }
+
+        .product-icon {
+            width: 50px;
+            height: 50px;
+            background: #10b981;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .product-card p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .learn-more {
+            color: #10b981;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .learn-more:hover {
+            color: #059669;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 5%;
+            background: #10b981;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 5%;
+            background: #f9fafb;
+        }
+
+        .features-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .features-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #111827;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon-small {
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+
+        .feature-item p {
+            color: #6b7280;
+        }
+
+        .features-visual {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 12px;
+            padding: 3rem;
+            color: white;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-visual::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .testimonial-text {
+            color: #374151;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: #10b981;
+            border-radius: 50%;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .author-title {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: #111827;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 6rem 5%;
+            background: #f9fafb;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: #10b981;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: #10b981;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            color: #4b5563;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #10b981;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .animated-text {
+                min-width: 200px;
+            }
+
+            .mockup-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Recruiton</div>
+        <ul class="nav-links">
+            <li><a href="#products">Products</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#resources">Resources</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-secondary">Book a Demo</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>
+            Recruiting, <span class="animated-text" id="rotatingText">Payroll</span>,<br>
+            and compliance for global teams
+        </h1>
+        <p>Recruiton empowers hundreds of companies to expand internationally with exceptional speed, flexibility and compliance. Access our comprehensive Global People Platform that streamlines hiring and workforce management.</p>
+        <div class="hero-buttons">
+            <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-primary">Get a Free Demo</a>
+            <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-secondary">Speak to Sales</a>
+        </div>
+       
+        <!-- IMPROVED DASHBOARD VISUAL -->
+        <div class="hero-image">
+            <div class="dashboard-mockup">
+                <div class="mockup-header">
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                </div>
+                <div class="mockup-content">
+                    <div class="mockup-sidebar">
+                        <div class="mockup-sidebar-item">
+                            <strong style="display: block; margin-bottom: 0.5rem;">📊 Dashboard</strong>
+                        </div>
+                        <div class="mockup-sidebar-item" style="border-left-color: #6b7280;">
+                            <strong style="display: block; margin-bottom: 0.5rem;">👥 Team</strong>
+                        </div>
+                        <div class="mockup-sidebar-item" style="border-left-color: #6b7280;">
+                            <strong style="display: block; margin-bottom: 0.5rem;">📋 Recruiting</strong>
+                        </div>
+                        <div class="mockup-sidebar-item" style="border-left-color: #6b7280;">
+                            <strong style="display: block; margin-bottom: 0.5rem;">💰 Payroll</strong>
+                        </div>
+                    </div>
+                    <div class="mockup-main">
+                        <div class="mockup-card">
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.3rem;">Global Team Overview</h3>
+                            <p style="margin: 0; opacity: 0.9;">15,234 employees across 110+ countries</p>
+                        </div>
+                        <div class="mockup-grid">
+                            <div class="mockup-stat">
+                                <span class="stat-number">350+</span>
+                                <span class="stat-label">Active Companies</span>
+                            </div>
+                            <div class="mockup-stat">
+                                <span class="stat-number">98.5%</span>
+                                <span class="stat-label">Compliance Rate</span>
+                            </div>
+                            <div class="mockup-stat">
+                                <span class="stat-number">24h</span>
+                                <span class="stat-label">Avg. Onboarding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Banner -->
+    <section class="trust-banner">
+        <p>Trusted by 350+ companies from startups to growing businesses</p>
+        <div class="logo-scroll">
+            <div class="company-logo">TechStart</div>
+            <div class="company-logo">GlobalCo</div>
+            <div class="company-logo">InnovateX</div>
+            <div class="company-logo">CloudHub</div>
+            <div class="company-logo">DataFlow</div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section-title">
+            <h2>Recruiton is your comprehensive Global People Platform</h2>
+        </div>
+        <div class="products-grid">
+            <article class="product-card" onclick="window.open('https://calendly.com/farhanhaider-350/30min', '_blank')">
+                <div class="product-icon">🌍</div>
+                <h3>Recruiton Global Recruiting</h3>
+                <p>Recruit and onboard talent in 130+ countries with full compliance and speed, without establishing local entities.</p>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="learn-more" onclick="event.stopPropagation()">Learn more →</a>
+            </article>
+            <article class="product-card" onclick="window.open('https://calendly.com/farhanhaider-350/30min', '_blank')">
+                <div class="product-icon">👥</div>
+                <h3>Contractor Management</h3>
+                <p>Seamlessly onboard, manage, and compensate international contractors through an intuitive self-service platform.</p>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="learn-more" onclick="event.stopPropagation()">Learn more →</a>
+            </article>
+            <article class="product-card" onclick="window.open('https://calendly.com/farhanhaider-350/30min', '_blank')">
+                <div class="product-icon">💼</div>
+                <h3>Recruiton HR</h3>
+                <p>Oversee the entire employee journey with integrated tools, intelligent automation, and built-in compliance features.</p>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="learn-more" onclick="event.stopPropagation()">Learn more →</a>
+            </article>
+            <article class="product-card" onclick="window.open('https://calendly.com/farhanhaider-350/30min', '_blank')">
+                <div class="product-icon">📊</div>
+                <h3>Compliance Hub</h3>
+                <p>Maintain worldwide compliance with automatic monitoring, real-time updates, and expert regulatory guidance.</p>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="learn-more" onclick="event.stopPropagation()">Learn more →</a>
+            </article>
+            <article class="product-card" onclick="window.open('https://calendly.com/farhanhaider-350/30min', '_blank')">
+                <div class="product-icon">⚡</div>
+                <h3>Background Checks</h3>
+                <p>Authenticate candidates efficiently with thorough background verification across 110+ countries worldwide.</p>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="learn-more" onclick="event.stopPropagation()">Learn more →</a>
+            </article>
+            <article class="product-card" onclick="window.open('https://calendly.com/farhanhaider-350/30min', '_blank')">
+                <div class="product-icon">🎯</div>
+                <h3>Talent Sourcing</h3>
+                <p>Discover, connect with, and recruit top-tier candidates rapidly using AI-driven recruiting technology.</p>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="learn-more" onclick="event.stopPropagation()">Learn more →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>15K+</h3>
+                <p>workers onboarded globally</p>
+            </div>
+            <div class="stat-item">
+                <h3>350+</h3>
+                <p>global businesses supported</p>
+            </div>
+            <div class="stat-item">
+                <h3>$1.7M</h3>
+                <p>compliantly processed</p>
+            </div>
+            <div class="stat-item">
+                <h3>110+</h3>
+                <p>countries covered</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="features-content">
+            <div class="features-text">
+                <h2>Accelerate growth with recruiting and HR unified</h2>
+                <ul class="features-list">
+                    <li class="feature-item">
+                        <div class="feature-icon-small"></div>
+                        <div>
+                            <h4>Advanced Analytics</h4>
+                            <p>Access deep insights into recruitment metrics, team performance data, and compensation trends.</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon-small"></div>
+                        <div>
+                            <h4>Flexible Growth</h4>
+                            <p>Whether contractors or full-time staff, expand your international team at every growth phase.</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon-small"></div>
+                        <div>
+                            <h4>Expert Support</h4>
+                            <p>Benefit from a dedicated account manager with quick, guaranteed response times.</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon-small"></div>
+                        <div>
+                            <h4>Easy Integration</h4>
+                            <p>Sync with 100+ platforms throughout your technology ecosystem, from finance to expenses.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="features-visual">
+                <h3 style="font-size: 2rem; position: relative; z-index: 1;">Your complete recruiting toolkit in one integrated platform</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-title">
+            <h2>What our clients are saying</h2>
+            <p>4.8/5 based on 850+ reviews</p>
+        </div>
+        <div class="testimonials-grid">
+            <article class="testimonial-card">
+                <p class="testimonial-text">"Recruiton has transformed our hiring process completely. The platform is dependable, intuitive, and budget-friendly, making it essential for our international growth strategy."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div>
+                        <div class="author-name">Sarah Johnson</div>
+                        <div class="author-title">Head of Talent, TechCorp</div>
+                    </div>
+                </div>
+            </article>
+            <article class="testimonial-card">
+                <p class="testimonial-text">"The system is remarkably easy to use, making workflow management smooth and efficient. Their customer service team is exceptional and responsive whenever we need assistance."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div>
+                        <div class="author-name">Michael Chen</div>
+                        <div class="author-title">VP HR, Global Solutions Inc</div>
+                    </div>
+                </div>
+            </article>
+            <article class="testimonial-card">
+                <p class="testimonial-text">"Recruiton excels for organizations with distributed teams across multiple countries. It streamlines recruiting, ensures compliance, and centralizes management in one unified dashboard."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div>
+                        <div class="author-name">Emily Rodriguez</div>
+                        <div class="author-title">CEO, StartupXYZ</div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-title">
+            <h2>Simple, transparent pricing</h2>
+            <p>Choose the plan that's right for your business</p>
+        </div>
+        <div class="pricing-grid">
+            <article class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">$49<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>✓ Up to 10 employees</li>
+                    <li>✓ Basic HR tools</li>
+                    <li>✓ Email support</li>
+                    <li>✓ Standard compliance</li>
+                    <li>✓ Monthly reports</li>
+                </ul>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+            </article>
+            <article class="pricing-card featured">
+                <h3>Professional</h3>
+                <div class="price">$149<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>✓ Up to 50 employees</li>
+                    <li>✓ Advanced HR & recruiting</li>
+                    <li>✓ Priority support</li>
+                    <li>✓ Full compliance suite</li>
+                    <li>✓ Real-time analytics</li>
+                    <li>✓ API access</li>
+                </ul>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+            </article>
+            <article class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <ul class="pricing-features">
+                    <li>✓ Unlimited employees</li>
+                    <li>✓ Custom integrations</li>
+                    <li>✓ Dedicated support</li>
+                    <li>✓ Advanced security</li>
+                    <li>✓ Custom workflows</li>
+                    <li>✓ SLA guarantees</li>
+                </ul>
+                <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-primary" style="width: 100%; text-align: center;">Contact Sales</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Launch with Recruiton in three simple steps</h2>
+        <p>Join hundreds of companies recruiting globally with confidence</p>
+        <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Schedule a Call Today</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">About Us</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Careers</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Press</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Global Recruiting</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Contractor Management</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">HR Platform</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Blog</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Help Center</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Case Studies</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Guides</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Privacy Policy</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Terms of Service</a></li>
+                    <li><a href="https://calendly.com/farhanhaider-350/30min" target="_blank">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Recruiton. All Rights Reserved. | <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" style="color: #10b981;">Schedule a Meeting</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Text rotation animation
+        const rotatingTexts = ['Payroll', 'HR', 'Compliance', 'Benefits'];
+        let currentIndex = 0;
+        const textElement = document.getElementById('rotatingText');
+       
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % rotatingTexts.length;
+            textElement.style.opacity = '0';
+            setTimeout(() => {
+                textElement.textContent = rotatingTexts[currentIndex];
+                textElement.style.opacity = '1';
+            }, 300);
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -326,6 +326,7 @@
         <form class="lead-form" style="margin-top:3rem;" data-lead-form data-source="Hero Form">
             <h3>Apply for SASO/SABER Certification</h3>
             <p class="form-note">Tell us your product and target shipment date. We'll respond within 30 minutes.</p>
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
             <label for="hero-name">Full Name</label>
             <input type="text" id="hero-name" name="name" required>
             <label for="hero-phone">Phone / WhatsApp</label>
@@ -551,6 +552,7 @@
         <form class="lead-form dark" data-lead-form data-source="Bottom Form">
             <h3>Get a Free Consultation</h3>
             <p class="form-note">Reply within 30 minutes · no obligation.</p>
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
             <label for="bottom-name">Full Name</label>
             <input type="text" id="bottom-name" name="name" required>
             <label for="bottom-email">Email</label>
@@ -607,6 +609,7 @@
             <form class="lead-form" data-lead-form data-source="Popup Form">
                 <h3>Speak to a Certification Expert</h3>
                 <p class="form-note">Reply within 30 minutes · no obligation.</p>
+                <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
                 <label for="popup-name">Full Name</label>
                 <input type="text" id="popup-name" name="name" required>
                 <label for="popup-phone">Phone / WhatsApp</label>
@@ -630,24 +633,51 @@
             });
         });
 
-        // Lead forms: build a mailto: with the submitted details.
-        // NOTE: this is a stopgap for a static site with no backend.
-        // Replace with a real form endpoint (Formspree, Google Forms, or your own CRM) for reliable lead capture.
+        // Lead forms: submit to submit-lead.php via fetch.
+        // Falls back to a mailto: link only if the request fails outright
+        // (e.g. PHP not yet deployed, network error).
         document.querySelectorAll('[data-lead-form]').forEach(function(form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 var source = form.getAttribute('data-source');
-                var data = new FormData(form);
-                var lines = ['New SASO/SABER enquiry from recruiton.io (' + source + ')', ''];
-                data.forEach(function(value, key) {
-                    if (value) lines.push(key.charAt(0).toUpperCase() + key.slice(1) + ': ' + value);
-                });
-                var subject = encodeURIComponent('SASO/SABER Certification Enquiry - ' + source);
-                var body = encodeURIComponent(lines.join('\n'));
-                window.location.href = 'mailto:hello@recruiton.io?subject=' + subject + '&body=' + body;
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var originalBtnText = submitBtn ? submitBtn.textContent : '';
                 var success = form.querySelector('.form-success');
-                if (success) success.style.display = 'block';
-                form.reset();
+                var data = new FormData(form);
+
+                if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+                fetch('/submit-lead.php', { method: 'POST', body: data })
+                    .then(function(res) { return res.json(); })
+                    .then(function(json) {
+                        if (json.success) {
+                            if (success) {
+                                success.textContent = 'Thanks! We\'ll be in touch within 30 minutes.';
+                                success.style.display = 'block';
+                            }
+                            form.reset();
+                        } else {
+                            throw new Error((json.errors && json.errors.join(', ')) || 'Submission failed');
+                        }
+                    })
+                    .catch(function() {
+                        // Fallback: open email client with prefilled details
+                        var lines = ['New SASO/SABER enquiry from recruiton.io (' + source + ')', ''];
+                        data.forEach(function(value, key) {
+                            if (value && key !== 'website') lines.push(key.charAt(0).toUpperCase() + key.slice(1) + ': ' + value);
+                        });
+                        var subject = encodeURIComponent('SASO/SABER Certification Enquiry - ' + source);
+                        var body = encodeURIComponent(lines.join('\n'));
+                        window.location.href = 'mailto:hello@recruiton.io?subject=' + subject + '&body=' + body;
+                        if (success) {
+                            success.textContent = 'Your email client should have opened with your details — please hit send.';
+                            success.style.display = 'block';
+                        }
+                        form.reset();
+                    })
+                    .finally(function() {
+                        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+                    });
             });
         });
 

@@ -1,0 +1,11 @@
+# Block direct public access to the leads backup log
+<FilesMatch "leads-log\.csv$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Also block any other .csv or .log files from direct download, as a general safety net
+<FilesMatch "\.(csv|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

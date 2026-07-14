@@ -243,6 +243,53 @@
             .hero h1 { font-size: 2.1rem; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
         }
+
+        /* Lead form (shared by hero, bottom CTA, popup) */
+        .lead-form {
+            background: white;
+            border-radius: 14px;
+            padding: 1.75rem;
+            max-width: 480px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+        .lead-form.dark {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: none;
+        }
+        .lead-form h3 { font-size: 1.15rem; margin-bottom: 0.3rem; color: #0f172a; }
+        .lead-form.dark h3 { color: white; }
+        .lead-form .form-note { font-size: 0.85rem; color: #6b7280; margin-bottom: 1rem; }
+        .lead-form.dark .form-note { color: #cbd5e1; }
+        .lead-form label { display: block; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 0.3rem; margin-top: 0.8rem; }
+        .lead-form.dark label { color: #e5e7eb; }
+        .lead-form input, .lead-form textarea, .lead-form select {
+            width: 100%; padding: 0.65rem 0.8rem; border: 1px solid #d1d5db;
+            border-radius: 8px; font-size: 0.92rem; font-family: inherit;
+        }
+        .lead-form.dark input, .lead-form.dark textarea, .lead-form.dark select {
+            background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: white;
+        }
+        .lead-form textarea { resize: vertical; min-height: 70px; }
+        .lead-form button.btn-primary { width: 100%; margin-top: 1.2rem; }
+        .form-success { display: none; color: #059669; font-weight: 600; font-size: 0.9rem; margin-top: 1rem; }
+        .lead-form.dark .form-success { color: #34d399; }
+
+        /* Popup modal */
+        .popup-overlay {
+            display: none;
+            position: fixed; inset: 0; background: rgba(15,23,42,0.65);
+            z-index: 2000; align-items: center; justify-content: center; padding: 1rem;
+        }
+        .popup-overlay.show { display: flex; }
+        .popup-box { position: relative; width: 100%; max-width: 480px; }
+        .popup-close {
+            position: absolute; top: -14px; right: -14px; background: white;
+            border-radius: 50%; width: 32px; height: 32px; border: none;
+            font-size: 1.1rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -275,6 +322,19 @@
             <div class="stat-item"><h3>10K+</h3><p>Projects Delivered</p></div>
             <div class="stat-item"><h3>100+</h3><p>Brands Trust Us</p></div>
         </div>
+
+        <form class="lead-form" style="margin-top:3rem;" data-lead-form data-source="Hero Form">
+            <h3>Apply for SASO/SABER Certification</h3>
+            <p class="form-note">Tell us your product and target shipment date. We'll respond within 30 minutes.</p>
+            <label for="hero-name">Full Name</label>
+            <input type="text" id="hero-name" name="name" required>
+            <label for="hero-phone">Phone / WhatsApp</label>
+            <input type="tel" id="hero-phone" name="phone" required>
+            <label for="hero-product">Product / Certification Needed</label>
+            <input type="text" id="hero-product" name="product" placeholder="e.g. LED lighting, toys, SFDA">
+            <button type="submit" class="btn-primary">Talk To A Compliance Expert</button>
+            <p class="form-success">Thanks! Your email client should have opened with your details — please hit send.</p>
+        </form>
     </section>
 
     <div class="trust-bar">Trusted by exporters shipping to Saudi Arabia and beyond</div>
@@ -487,7 +547,23 @@
     <section class="final-cta" id="contact">
         <h2>Ready to Enter Saudi Arabia With Full Compliance?</h2>
         <p>Tell us about your product and target market. A compliance expert will respond within 30 minutes with a clear roadmap, indicative timeline, and costed proposal.</p>
-        <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-primary">Talk To A Compliance Expert</a>
+
+        <form class="lead-form dark" data-lead-form data-source="Bottom Form">
+            <h3>Get a Free Consultation</h3>
+            <p class="form-note">Reply within 30 minutes · no obligation.</p>
+            <label for="bottom-name">Full Name</label>
+            <input type="text" id="bottom-name" name="name" required>
+            <label for="bottom-email">Email</label>
+            <input type="email" id="bottom-email" name="email" required>
+            <label for="bottom-phone">Phone / WhatsApp</label>
+            <input type="tel" id="bottom-phone" name="phone" required>
+            <label for="bottom-product">Product / Certification Needed</label>
+            <input type="text" id="bottom-product" name="product">
+            <label for="bottom-message">Message</label>
+            <textarea id="bottom-message" name="message" placeholder="Tell us about your shipment, timeline, or questions"></textarea>
+            <button type="submit" class="btn-primary">Get Free Consultation</button>
+            <p class="form-success">Thanks! Your email client should have opened with your details — please hit send.</p>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -524,7 +600,27 @@
         </div>
     </footer>
 
+    <!-- Popup form (appears after 20 seconds) -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-box">
+            <button class="popup-close" id="popup-close" aria-label="Close">&times;</button>
+            <form class="lead-form" data-lead-form data-source="Popup Form">
+                <h3>Speak to a Certification Expert</h3>
+                <p class="form-note">Reply within 30 minutes · no obligation.</p>
+                <label for="popup-name">Full Name</label>
+                <input type="text" id="popup-name" name="name" required>
+                <label for="popup-phone">Phone / WhatsApp</label>
+                <input type="tel" id="popup-phone" name="phone" required>
+                <label for="popup-product">Product / Certification Needed</label>
+                <input type="text" id="popup-product" name="product">
+                <button type="submit" class="btn-primary">Get Free Consultation</button>
+                <p class="form-success">Thanks! Your email client should have opened with your details — please hit send.</p>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(function(q) {
             q.addEventListener('click', function() {
                 var item = q.parentElement;
@@ -533,6 +629,42 @@
                 if (!wasOpen) item.classList.add('open');
             });
         });
+
+        // Lead forms: build a mailto: with the submitted details.
+        // NOTE: this is a stopgap for a static site with no backend.
+        // Replace with a real form endpoint (Formspree, Google Forms, or your own CRM) for reliable lead capture.
+        document.querySelectorAll('[data-lead-form]').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var source = form.getAttribute('data-source');
+                var data = new FormData(form);
+                var lines = ['New SASO/SABER enquiry from recruiton.io (' + source + ')', ''];
+                data.forEach(function(value, key) {
+                    if (value) lines.push(key.charAt(0).toUpperCase() + key.slice(1) + ': ' + value);
+                });
+                var subject = encodeURIComponent('SASO/SABER Certification Enquiry - ' + source);
+                var body = encodeURIComponent(lines.join('\n'));
+                window.location.href = 'mailto:hello@recruiton.io?subject=' + subject + '&body=' + body;
+                var success = form.querySelector('.form-success');
+                if (success) success.style.display = 'block';
+                form.reset();
+            });
+        });
+
+        // Popup after 20 seconds (once per session)
+        (function() {
+            var overlay = document.getElementById('popup-overlay');
+            var closeBtn = document.getElementById('popup-close');
+            if (sessionStorage.getItem('sasoPopupShown')) return;
+            setTimeout(function() {
+                overlay.classList.add('show');
+                sessionStorage.setItem('sasoPopupShown', '1');
+            }, 20000);
+            closeBtn.addEventListener('click', function() { overlay.classList.remove('show'); });
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) overlay.classList.remove('show');
+            });
+        })();
     </script>
 </body>
 </html>

@@ -748,6 +748,53 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* HR & Recruitment Solutions */
+        .solutions-section {
+            padding: 5rem 5%;
+            background: #fdfaf3;
+        }
+        .solutions-wrap { max-width: 1200px; margin: 0 auto; }
+        .solutions-eyebrow {
+            color: #059669; font-weight: 700; text-transform: uppercase;
+            font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 0.8rem;
+        }
+        .solutions-wrap h2 {
+            font-size: 2.6rem; font-weight: 800; margin-bottom: 1rem; color: #0f172a;
+        }
+        .solutions-wrap h2 .accent { color: #10b981; }
+        .solutions-wrap > p {
+            color: #4b5563; font-size: 1.05rem; max-width: 800px; margin-bottom: 3rem;
+        }
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .solution-card {
+            display: flex; gap: 1rem;
+            background: white; border-radius: 12px;
+            padding: 1.75rem; border: 1px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+        .solution-card:hover { border-color: #10b981; box-shadow: 0 8px 20px rgba(16,185,129,0.12); transform: translateY(-3px); }
+        .solution-num {
+            flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+            background: #0f172a; color: white; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; font-size: 1rem;
+        }
+        .solution-card h4 { font-size: 1.05rem; color: #0f172a; margin-bottom: 0.4rem; }
+        .solution-card p { color: #6b7280; font-size: 0.92rem; margin-bottom: 0.5rem; }
+        .solution-card a { color: #059669; font-weight: 600; font-size: 0.9rem; }
+        .solution-card a:hover { color: #000000; }
+
+        @media (max-width: 900px) {
+            .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .solutions-grid { grid-template-columns: 1fr; }
+            .solutions-wrap h2 { font-size: 2rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -942,6 +989,90 @@
             </div>
             <div class="features-visual">
                 <h3 style="font-size: 2rem; position: relative; z-index: 1;">Your complete recruiting toolkit in one integrated platform</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- HR & Recruitment Solutions -->
+    <section class="solutions-section">
+        <div class="solutions-wrap">
+            <div class="solutions-eyebrow">Our HR & Recruitment Solutions</div>
+            <h2>End-to-End Workforce <span class="accent">Solutions for Growing Businesses</span></h2>
+            <p>Finding, hiring, and retaining the right talent shouldn't be complicated. RecruitOn delivers comprehensive HR and recruitment services that help businesses build high-performing teams faster while reducing hiring costs and improving workforce productivity.</p>
+
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-num">1</div>
+                    <div>
+                        <h4>Permanent Recruitment</h4>
+                        <p>Hire qualified professionals for full-time positions across IT, Non-IT, Sales, Marketing, Finance, Healthcare, Manufacturing, and more.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">2</div>
+                    <div>
+                        <h4>Executive Search</h4>
+                        <p>Identify and recruit senior executives, leadership professionals, and C-level talent with a confidential and strategic hiring process.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">3</div>
+                    <div>
+                        <h4>Contract Staffing</h4>
+                        <p>Scale your workforce quickly with flexible contract staffing solutions for short-term, seasonal, and project-based hiring.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">4</div>
+                    <div>
+                        <h4>Recruitment Process Outsourcing (RPO)</h4>
+                        <p>Outsource your entire recruitment function to our experienced hiring specialists for faster, more efficient talent acquisition.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">5</div>
+                    <div>
+                        <h4>Bulk & Volume Hiring</h4>
+                        <p>Efficiently recruit large numbers of candidates for expansion projects, campus drives, retail, BPO, logistics, and manufacturing sectors.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">6</div>
+                    <div>
+                        <h4>HR Consulting & Compliance</h4>
+                        <p>Receive expert guidance on HR policies, compliance, workforce planning, employee documentation, and organizational development.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">7</div>
+                    <div>
+                        <h4>Payroll & HR Operations</h4>
+                        <p>Simplify payroll processing, attendance management, employee records, statutory compliance, and HR administration.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">8</div>
+                    <div>
+                        <h4>Talent Mapping & Workforce Planning</h4>
+                        <p>Build a future-ready workforce with strategic talent mapping, succession planning, market intelligence, and hiring insights.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-num">9</div>
+                    <div>
+                        <h4>Employer Branding & Talent Acquisition</h4>
+                        <p>Strengthen your employer brand and attract top talent through optimized recruitment marketing, career pages, and candidate engagement strategies.</p>
+                        <a href="#">Learn More ›</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

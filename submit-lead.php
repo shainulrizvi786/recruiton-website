@@ -59,12 +59,14 @@ function clean_field($value) {
 }
 
 // ---- Collect + validate fields ----
-$name    = clean_field($_POST['name'] ?? '');
-$phone   = clean_field($_POST['phone'] ?? '');
-$email   = clean_field($_POST['email'] ?? '');
-$product = clean_field($_POST['product'] ?? '');
-$message = clean_field($_POST['message'] ?? '');
-$source  = clean_field($_POST['source'] ?? 'Unknown Form');
+$name          = clean_field($_POST['name'] ?? '');
+$phone         = clean_field($_POST['phone'] ?? '');
+$email         = clean_field($_POST['email'] ?? '');
+$product       = clean_field($_POST['product'] ?? '');
+$company       = clean_field($_POST['company'] ?? '');
+$certification = clean_field($_POST['certification'] ?? '');
+$message       = clean_field($_POST['message'] ?? '');
+$source        = clean_field($_POST['source'] ?? 'Unknown Form');
 
 $errors = [];
 if ($name === '') {
@@ -91,7 +93,9 @@ $body .= "Source: {$source}\n";
 $body .= "Name: {$name}\n";
 $body .= "Phone: {$phone}\n";
 $body .= "Email: {$email}\n";
+$body .= "Company: {$company}\n";
 $body .= "Product/Certification: {$product}\n";
+$body .= "Required Certification: {$certification}\n";
 $body .= "Message: {$message}\n";
 $body .= "Submitted at: " . date('Y-m-d H:i:s') . "\n";
 $body .= "IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown') . "\n";
@@ -114,7 +118,9 @@ $logRow = [
     $name,
     $phone,
     $email,
+    $company,
     $product,
+    $certification,
     str_replace(["\r", "\n"], ' ', $message),
     $_SERVER['REMOTE_ADDR'] ?? '',
 ];
@@ -123,7 +129,7 @@ $fileExists = file_exists(LOG_FILE);
 $fp = @fopen(LOG_FILE, 'a');
 if ($fp) {
     if (!$fileExists) {
-        fputcsv($fp, ['Timestamp', 'Source', 'Name', 'Phone', 'Email', 'Product', 'Message', 'IP']);
+        fputcsv($fp, ['Timestamp', 'Source', 'Name', 'Phone', 'Email', 'Company', 'Product', 'Certification', 'Message', 'IP']);
     }
     fputcsv($fp, $logRow);
     fclose($fp);

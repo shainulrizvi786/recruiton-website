@@ -635,6 +635,43 @@
             border-bottom: none;
         }
 
+        /* Appointment form section (above footer) */
+        .appointment-section {
+            background: linear-gradient(135deg, #fdfaf3 0%, #eaf3fb 100%);
+            padding: 5rem 5%;
+        }
+        .appointment-wrap { max-width: 1000px; margin: 0 auto; }
+        .appt-eyebrow {
+            display: flex; align-items: center; gap: 0.8rem;
+            color: #059669; font-weight: 700; text-transform: uppercase;
+            font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 1rem;
+        }
+        .appt-eyebrow::after { content: ''; flex: 1; max-width: 120px; height: 2px; background: #059669; }
+        .appointment-wrap h2 { font-size: 2.6rem; font-weight: 800; color: #0f172a; margin-bottom: 0.8rem; }
+        .appointment-wrap .appt-subtext { font-size: 1.05rem; color: #4b5563; margin-bottom: 2.5rem; }
+        .appointment-wrap .appt-subtext strong { color: #0f172a; }
+        .appt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
+        .appt-grid input {
+            width: 100%; padding: 1rem 1.2rem; border: 1px solid #d1d5db;
+            border-radius: 10px; font-size: 0.95rem; font-family: inherit;
+            background: white; color: #1f2937;
+        }
+        .appt-grid input::placeholder { color: #6b7280; font-weight: 500; }
+        .appt-grid input:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.15); }
+        .appt-submit {
+            background: #059669; color: white; border: none; padding: 1rem 2.2rem;
+            border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer;
+            transition: all 0.3s;
+        }
+        .appt-submit:hover { background: #000000; transform: translateY(-2px); }
+        .appointment-section .form-success { display: none; color: #059669; font-weight: 600; margin-top: 1rem; }
+        .appointment-section .form-error { display: none; color: #dc2626; font-weight: 600; margin-top: 1rem; font-size: 0.9rem; }
+
+        @media (max-width: 640px) {
+            .appt-grid { grid-template-columns: 1fr; }
+            .appointment-wrap h2 { font-size: 2rem; }
+        }
+
         /* Footer */
         footer {
             background: #111827;
@@ -1004,6 +1041,30 @@
         <a href="https://calendly.com/farhanhaider-350/30min" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Schedule a Call Today</a>
     </section>
 
+    <!-- Appointment Contact Form -->
+    <section class="appointment-section">
+        <div class="appointment-wrap">
+            <div class="appt-eyebrow">Contact Us</div>
+            <h2>Book an Appointment</h2>
+            <p class="appt-subtext">Want to contact our team and schedule a call? <strong>Try Now</strong></p>
+
+            <form data-lead-form data-source="Homepage Appointment Form">
+                <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+                <div class="appt-grid">
+                    <input type="text" name="name" placeholder="Full Name *" required>
+                    <input type="email" name="email" placeholder="Email Address *" required>
+                    <input type="tel" name="phone" placeholder="Contact Number *" required>
+                    <input type="text" name="company" placeholder="Company Name *" required>
+                    <input type="text" name="company_size" placeholder="Company Size *" required>
+                    <input type="text" name="service" placeholder="Service Interested In *" required>
+                </div>
+                <button type="submit" class="appt-submit">Book Appointment</button>
+                <p class="form-success">Thanks! Your appointment request has been received — we'll be in touch within 30 minutes.</p>
+                <p class="form-error"></p>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -1062,6 +1123,53 @@
                 textElement.style.opacity = '1';
             }, 300);
         }, 3000);
+
+        // Lead form: submit to submit-lead.php via fetch, with mailto fallback.
+        document.querySelectorAll('[data-lead-form]').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var source = form.getAttribute('data-source');
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var originalBtnText = submitBtn ? submitBtn.textContent : '';
+                var success = form.querySelector('.form-success');
+                var errorEl = form.querySelector('.form-error');
+                var data = new FormData(form);
+
+                if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+                if (errorEl) errorEl.style.display = 'none';
+
+                fetch('/submit-lead.php', { method: 'POST', body: data })
+                    .then(function(res) { return res.json(); })
+                    .then(function(json) {
+                        if (json.success) {
+                            if (success) {
+                                success.textContent = "Thanks! We'll be in touch within 30 minutes.";
+                                success.style.display = 'block';
+                            }
+                            form.reset();
+                        } else {
+                            throw new Error((json.errors && json.errors.join(', ')) || 'Submission failed');
+                        }
+                    })
+                    .catch(function() {
+                        var lines = ['New enquiry from recruiton.io (' + source + ')', ''];
+                        data.forEach(function(value, key) {
+                            if (value && key !== 'website') lines.push(key.charAt(0).toUpperCase() + key.slice(1) + ': ' + value);
+                        });
+                        var subject = encodeURIComponent('Recruiton Enquiry - ' + source);
+                        var body = encodeURIComponent(lines.join('\n'));
+                        window.location.href = 'mailto:hello@recruiton.io?subject=' + subject + '&body=' + body;
+                        if (success) {
+                            success.textContent = 'Thanks! Your email client should have opened with your details — please hit send.';
+                            success.style.display = 'block';
+                        }
+                        form.reset();
+                    })
+                    .finally(function() {
+                        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+                    });
+            });
+        });
     </script>
 </body>
 </html>

@@ -64,6 +64,8 @@ $phone         = clean_field($_POST['phone'] ?? '');
 $email         = clean_field($_POST['email'] ?? '');
 $product       = clean_field($_POST['product'] ?? '');
 $company       = clean_field($_POST['company'] ?? '');
+$companySize   = clean_field($_POST['company_size'] ?? '');
+$service       = clean_field($_POST['service'] ?? '');
 $certification = clean_field($_POST['certification'] ?? '');
 $message       = clean_field($_POST['message'] ?? '');
 $source        = clean_field($_POST['source'] ?? 'Unknown Form');
@@ -94,6 +96,8 @@ $body .= "Name: {$name}\n";
 $body .= "Phone: {$phone}\n";
 $body .= "Email: {$email}\n";
 $body .= "Company: {$company}\n";
+$body .= "Company Size: {$companySize}\n";
+$body .= "Service Interested In: {$service}\n";
 $body .= "Product/Certification: {$product}\n";
 $body .= "Required Certification: {$certification}\n";
 $body .= "Message: {$message}\n";
@@ -119,6 +123,8 @@ $logRow = [
     $phone,
     $email,
     $company,
+    $companySize,
+    $service,
     $product,
     $certification,
     str_replace(["\r", "\n"], ' ', $message),
@@ -129,7 +135,7 @@ $fileExists = file_exists(LOG_FILE);
 $fp = @fopen(LOG_FILE, 'a');
 if ($fp) {
     if (!$fileExists) {
-        fputcsv($fp, ['Timestamp', 'Source', 'Name', 'Phone', 'Email', 'Company', 'Product', 'Certification', 'Message', 'IP']);
+        fputcsv($fp, ['Timestamp', 'Source', 'Name', 'Phone', 'Email', 'Company', 'Company Size', 'Service', 'Product', 'Certification', 'Message', 'IP']);
     }
     fputcsv($fp, $logRow);
     fclose($fp);

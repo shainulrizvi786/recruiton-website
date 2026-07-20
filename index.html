@@ -825,6 +825,27 @@
             .float-contact svg { width: 24px; height: 24px; }
         }
 
+        /* Leadership / CEO section */
+        .leadership-section { padding: 5rem 5%; background: white; }
+        .leadership-wrap {
+            max-width: 900px; margin: 0 auto;
+            display: flex; gap: 2.5rem; align-items: center;
+            background: #f9fafb; border-radius: 16px; padding: 3rem;
+        }
+        .leadership-avatar {
+            flex-shrink: 0; width: 120px; height: 120px; border-radius: 50%;
+            background: #10b981; color: white; font-size: 2.4rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .leadership-label { color: #059669; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+        .leadership-wrap h2 { font-size: 1.6rem; color: #0f172a; margin-bottom: 0.1rem; }
+        .leadership-title { color: #6b7280; font-weight: 600; margin-bottom: 1rem; font-size: 0.95rem; }
+        .leadership-wrap p.bio { color: #4b5563; font-size: 1rem; line-height: 1.7; }
+
+        @media (max-width: 700px) {
+            .leadership-wrap { flex-direction: column; text-align: center; padding: 2rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -1148,6 +1169,19 @@
     </section>
 
     <!-- Pricing Section -->
+    <!-- Leadership -->
+    <section class="leadership-section">
+        <div class="leadership-wrap">
+            <div class="leadership-avatar">FH</div>
+            <div>
+                <div class="leadership-label">Leadership</div>
+                <h2>Farhan Haider</h2>
+                <p class="leadership-title">Founder &amp; CEO, Recruiton</p>
+                <p class="bio">Farhan founded Recruiton with a simple goal: make global hiring, HR, and payroll effortless for growing businesses. Under his leadership, Recruiton is built around speed, compliance, and putting people first — helping companies build strong teams across borders without the usual complexity.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="pricing-section" id="pricing">
         <div class="section-title">
             <h2>Simple, transparent pricing</h2>
